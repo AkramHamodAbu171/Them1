@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 252 24% 96%;
+    --foreground: 255 10% 10%;
+    --primary: 255 45% 49%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 252 20% 90%;
+    --muted-foreground: 255 10% 40%;
+    --accent: 209 91% 57%;
+    --border: 252 20% 88%;
+    --radius: 1.25rem;
+  }
+}
+
+@layer components {
+  .text-glow-primary { text-shadow: 0 0 12px hsla(var(--primary) / 0.4); }
+  .glass-morphism { @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-sm; }
+  .shimmer-text {
+    background: linear-gradient(90deg, #111, #666, #111);
+    background-size: 200% auto;
+    @apply bg-clip-text text-transparent animate-shimmer;
+  }
+  .btn-7 {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95 rounded-full px-8 py-3 font-black uppercase tracking-widest text-[10px];
+  }
+}
+
+@keyframes shimmer { to { background-position: 200% center; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes reveal-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glow-pulse { 0%, 100% { opacity: 0.6; filter: blur(8px); } 50% { opacity: 1; filter: blur(12px); } }
+
+.animate-shimmer { animation: shimmer 2.5s linear infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-reveal-up { animation: reveal-up 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
